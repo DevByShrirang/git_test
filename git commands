@@ -8,6 +8,17 @@ git stash pop and git add then git commit
 Ans-- first we need to remove the sensitive file from tracking git rm --cached and add it to .gitignore. then i would rewrite git history using git filter-branch to remove that file from all previous commits.
 
 git diff --I use git diff daily to verify code changes before committing, especially to catch accidental or debug lines. I also use git diff --cached to review staged changes before pushing. In CI pipelines, I’ve used git diff --name-only HEAD~1 HEAD to detect which files changed between commits and trigger jobs conditionally — like skipping builds when only README files change
+************************
+when we modify any file or any changes in remote repository we need to do below process to make in sync both local and remote repository.
+1) git fetch - git fetches latest commits from remote(origin) but does not change your local working branch. local reponow knows about remote updates, but has not applied them yet.
+2) git merge origin/main - merge the fetched remote branch (origin/main) into your local main branch.
+
+OR we can use directly git pull
+git pull = git fetch + git merge.
+
+
+
+
 
 Command	Meaning	Use Case / Example
 git init	Initializes a new Git repository	Start tracking version control in a project folder
